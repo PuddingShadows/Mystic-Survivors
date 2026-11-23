@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://vqegmjb5lo87"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_fnsxr"]
+
+[node name="TouchButton" type="CanvasLayer" unique_id=1880478738]
+
+[node name="Virtual Joystick" parent="." unique_id=25797750 instance=ExtResource("1_fnsxr")]
+anchors_preset = -1
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.95800006
+offset_top = 120.0
+offset_right = -20.0
+offset_bottom = 247.55998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+deadzone_size = 1.0
+clampzone_size = 20.0
+visibility_mode = 1

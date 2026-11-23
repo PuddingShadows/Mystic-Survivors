@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cxj02ke4afvbt"]
+
+[ext_resource type="Script" uid="uid://dhgwrvfhj6m25" path="res://scripts/game_over.gd" id="1_xeevv"]
+
+[sub_resource type="SystemFont" id="SystemFont_0nqlu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xeevv"]
+font = SubResource("SystemFont_0nqlu")
+font_size = 25
+font_color = Color(1, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_wqhvx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbwuq"]
+font = SubResource("SystemFont_wqhvx")
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_0nqlu"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+Button/constants/outline_size = 10
+
+[sub_resource type="SystemFont" id="SystemFont_xeevv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqhvx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbwuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_racf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7m3ot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3hpu"]
+
+[node name="game_over" type="Control" unique_id=2056399609]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeevv")
+
+[node name="fundo_escuro" type="ColorRect" parent="." unique_id=661983419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="game_over" type="Label" parent="." unique_id=1832113345]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -80.0
+offset_right = 67.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_xeevv")
+
+[node name="score" type="Label" parent="." unique_id=717476787]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -35.0
+offset_right = 30.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "score: 0"
+label_settings = SubResource("LabelSettings_tbwuq")
+
+[node name="restart" type="Button" parent="." unique_id=1683361732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = 20.0
+offset_right = 35.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0nqlu")
+theme_override_fonts/font = SubResource("SystemFont_xeevv")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wqhvx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tbwuq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_racf3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7m3ot")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v3hpu")
+text = "restart"
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]

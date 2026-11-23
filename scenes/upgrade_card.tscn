@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://60yc7tqg1fgr"]
+
+[ext_resource type="Texture2D" uid="uid://ienvkr5q0tqu" path="res://assets/icons_upgrade/icon_life.png" id="1_62kwj"]
+[ext_resource type="Script" uid="uid://buu5dbunb35io" path="res://scripts/upgrade_card.gd" id="1_ew4bf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew4bf"]
+bg_color = Color(0.06919152, 0.069191545, 0.06919148, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_62kwj"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_62kwj"]
+font = SubResource("SystemFont_62kwj")
+font_size = 13
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew4bf"]
+font = SubResource("SystemFont_62kwj")
+font_size = 14
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk0rn"]
+font = SubResource("SystemFont_62kwj")
+font_size = 12
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0hv3p"]
+font = SubResource("SystemFont_62kwj")
+font_size = 12
+font_color = Color(0, 1, 0, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UpgradeCard" type="Panel" unique_id=1872883401]
+z_index = 5
+custom_minimum_size = Vector2(83, 126)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = -77.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ew4bf")
+script = ExtResource("1_ew4bf")
+
+[node name="image" type="TextureRect" parent="." unique_id=554890238]
+layout_mode = 0
+offset_left = 23.5
+offset_top = 27.0
+offset_right = 41.5
+offset_bottom = 44.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_62kwj")
+
+[node name="level" type="Label" parent="." unique_id=888981538]
+layout_mode = 0
+offset_left = 20.5
+offset_top = 4.0
+offset_right = 70.5
+offset_bottom = 27.0
+text = "level 0"
+label_settings = SubResource("LabelSettings_62kwj")
+justification_flags = 171
+
+[node name="nome" type="Label" parent="." unique_id=744214580]
+layout_mode = 0
+offset_left = 14.5
+offset_top = 63.0
+offset_right = 72.5
+offset_bottom = 86.0
+text = "Max Life"
+label_settings = SubResource("LabelSettings_ew4bf")
+justification_flags = 171
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=232169617]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 81.0
+offset_right = 84.0
+offset_bottom = 119.0
+alignment = 1
+
+[node name="porcent" type="Label" parent="VBoxContainer" unique_id=916103459]
+layout_mode = 2
+text = "0% --"
+label_settings = SubResource("LabelSettings_fk0rn")
+justification_flags = 171
+
+[node name="porcent_up" type="Label" parent="VBoxContainer" unique_id=913543643]
+layout_mode = 2
+text = "0%"
+label_settings = SubResource("LabelSettings_0hv3p")
+justification_flags = 171
+
+[node name="hover_outline" type="ColorRect" parent="." unique_id=1257863950]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -0.3846054
+offset_bottom = -2.9999924
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.04, 1.04)
+mouse_filter = 1

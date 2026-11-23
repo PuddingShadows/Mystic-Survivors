@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bo0dke805ksn"]
+
+[ext_resource type="Script" uid="uid://duba35amwti1r" path="res://scripts/slimes.gd" id="1_741lx"]
+[ext_resource type="Texture2D" uid="uid://dx5bnh3t15n55" path="res://assets/inimigos/slime/slime.png" id="2_8mkhp"]
+[ext_resource type="PackedScene" uid="uid://ctqij76d0dxy2" path="res://scenes/damage_number.tscn" id="2_pt5gt"]
+[ext_resource type="AudioStream" uid="uid://btk88e1ewe72c" path="res://sounds/SFXs/death_enemy.wav" id="4_pt5gt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pt50e"]
+size = Vector2(16, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_741lx"]
+size = Vector2(16, 14)
+
+[sub_resource type="Animation" id="Animation_pt50e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_21tsg"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 88]
+}
+
+[sub_resource type="Animation" id="Animation_61lki"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_4er16"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21tsg"]
+_data = {
+&"RESET": SubResource("Animation_pt50e"),
+&"death": SubResource("Animation_21tsg"),
+&"idle": SubResource("Animation_61lki"),
+&"walk": SubResource("Animation_4er16")
+}
+
+[node name="slime" type="CharacterBody2D" unique_id=1835383012 node_paths=PackedStringArray("texture", "anim") groups=["inimigo"]]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 31
+script = ExtResource("1_741lx")
+damage_number_scene = ExtResource("2_pt5gt")
+speed = 30.0
+texture = NodePath("texture")
+anim = NodePath("anim")
+damage = 1.5
+time = 0.03
+
+[node name="texture" type="Sprite2D" parent="." unique_id=927897367]
+texture = ExtResource("2_8mkhp")
+hframes = 7
+vframes = 13
+frame = 7
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1401518876]
+visible = false
+show_behind_parent = true
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_pt50e")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1750500376]
+visible = false
+collision_layer = 4
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=466089464]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_741lx")
+debug_color = Color(0.12833337, 0.7, 0, 0.41960785)
+
+[node name="death_sfx" type="AudioStreamPlayer2D" parent="." unique_id=1959106212]
+stream = ExtResource("4_pt5gt")
+volume_db = -10.0
+pitch_scale = 4.0
+area_mask = 63
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1310930799]
+libraries/ = SubResource("AnimationLibrary_21tsg")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

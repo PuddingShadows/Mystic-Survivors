@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ja21spmfucws"]
+
+[ext_resource type="Script" uid="uid://der0a3c8vl7us" path="res://scripts/upgrade_ui.gd" id="1_k1o73"]
+[ext_resource type="PackedScene" uid="uid://60yc7tqg1fgr" path="res://scenes/upgrade_card.tscn" id="2_jc35x"]
+
+[node name="upgrade_ui" type="Control" unique_id=1341117069]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k1o73")
+card_scene = ExtResource("2_jc35x")
+
+[node name="fundo_escuro" type="ColorRect" parent="." unique_id=1127845509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=210162262]
+process_mode = 3
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=2009023702]
+z_index = 5
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://petrjw6uvc00"]
+
+[ext_resource type="Texture2D" uid="uid://drnewh1ya62px" path="res://assets/tilemap/decor.png" id="1_1wwvk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgjip"]
+texture = ExtResource("1_1wwvk")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_a6sxq"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+sources/0 = SubResource("TileSetAtlasSource_cgjip")
+
+[node name="decoration" type="TileMapLayer" unique_id=171616824]
+z_index = 2
+y_sort_enabled = true
+tile_set = SubResource("TileSet_a6sxq")

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bkh5ybc2s8ohl"]
+
+[ext_resource type="Texture2D" uid="uid://dra7cxlkngc2n" path="res://assets/player/bow/arrow.png" id="1_6mjtb"]
+[ext_resource type="Script" uid="uid://clnjv8l3wcpkv" path="res://scripts/flecha.gd" id="1_26ync"]
+[ext_resource type="AudioStream" uid="uid://ccu1ehkrahk23" path="res://sounds/SFXs/damage_enemy.wav" id="3_y5q2e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_26ync"]
+radius = 3.0
+height = 18.0
+
+[node name="flecha" type="Area2D" unique_id=1788076262]
+z_index = 4
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_26ync")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1489246108]
+position = Vector2(0, 0.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_26ync")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=673721368]
+texture = ExtResource("1_6mjtb")
+
+[node name="damage_sfx" type="AudioStreamPlayer2D" parent="." unique_id=972285521]
+stream = ExtResource("3_y5q2e")
+volume_db = -5.0
+pitch_scale = 15.0
+attenuation = 1.1899207
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

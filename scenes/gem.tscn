@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d2bgfxti5wgq8"]
+
+[ext_resource type="Texture2D" uid="uid://cneuenocohip" path="res://assets/gem.png" id="1_5cxma"]
+[ext_resource type="Script" uid="uid://bjrwjn0jx3cg0" path="res://scripts/gem.gd" id="1_mpwtx"]
+[ext_resource type="AudioStream" uid="uid://rx1lavk5hvsy" path="res://sounds/SFXs/gem.wav" id="3_bhq7q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpwtx"]
+radius = 5.0
+height = 16.0
+
+[node name="gem" type="Area2D" unique_id=447405386 groups=["Gem"]]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+collision_layer = 32
+collision_mask = 65
+script = ExtResource("1_mpwtx")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=76116089]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_mpwtx")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=2090434694]
+texture = ExtResource("1_5cxma")
+
+[node name="collect_sfx" type="AudioStreamPlayer2D" parent="." unique_id=562675704]
+stream = ExtResource("3_bhq7q")
+volume_db = -10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

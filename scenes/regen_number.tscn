@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bjxaoy2ggvrpr"]
+
+[ext_resource type="Script" uid="uid://13aof3sl00kn" path="res://scripts/regen_number.gd" id="1_wt3pb"]
+
+[sub_resource type="SystemFont" id="SystemFont_idkk3"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_aie4f"]
+font = SubResource("SystemFont_idkk3")
+font_size = 11
+font_color = Color(0, 1.1764706, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RegenNumber" type="Node2D" unique_id=1045741281]
+script = ExtResource("1_wt3pb")
+
+[node name="Label" type="Label" parent="." unique_id=943418308]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_aie4f")
